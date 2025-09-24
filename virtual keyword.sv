@@ -1,0 +1,27 @@
+// Code your testbench here
+// or browse Examples
+virtual class base;
+  //virtual can only work in inherited classes
+  int a;
+  int b;
+  function void display();
+    $display("a=%0d,b=%0d",a,b);
+  endfunction
+endclass
+class sub extends base;
+endclass
+//should only use child class handle name to access.
+module tb;
+  sub s;
+  initial begin
+    s=new();
+    s.display();
+    s.b=50;
+    s.a=20;
+    s.display();
+  end
+endmodule
+
+//output:
+# KERNEL: a=0,b=0
+# KERNEL: a=20,b=50
